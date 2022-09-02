@@ -47,13 +47,13 @@ const disPlayNews = (allNews,name) => {
         console.log(news);
         const div = document.createElement('div');
         div.innerHTML = `
-        <div class="bg-base-100 shadow-xl mb-5 md:flex">
+        <div class="bg-base-100 shadow-xl mb-5 lg:flex">
             <div class='w-full lg:w-1/3'>
             <figure><img class='w-full' src="${news.thumbnail_url}" alt="Movie"></figure></div>
             <div class="card-body w-full lg:w-2/3">
                 <h2 class="card-title">${news.title}</h2>
                 <p>${news.details.length > 300 ? news.details.slice(0,300)+'...' : news.details}</p>
-                <div class="lg:flex justify-between items-center mt-8 lg:mt-0">
+                <div class="w-full lg:flex justify-evenly items-center">
                     <div class="lg:flex gap-5">
                         <img class="w-8 rounded-md" src="${news.author.img}" alt="">
                         <div>
@@ -61,7 +61,7 @@ const disPlayNews = (allNews,name) => {
                             <p>${news.author.published_date ? news.author.published_date : "No Date Found"}</p>
                         </div>
                     </div>
-                    <div class='flex mt-5 lg:mt-0'>
+                    <div class='flex gap-4 mt-5 lg:mt-0'>
                         <div><i class="fa-solid fa-eye"></i></div>
                         <p>${news.total_view ? news.total_view : 'No View'}</p>
                     </div>
@@ -74,7 +74,7 @@ const disPlayNews = (allNews,name) => {
                         <input type="radio" name="rating-2" class="mask mask-star-2 bg-white" />
                     </div>
 
-                    <div class="mt-5 lg:mt-0 w-full"><label onclick="getNewsId('${news._id}')" for="my-modal" class="btn modal-button btn-primary"><i class="fa-solid fa-arrow-right"></i></label></div>
+                    <div class="mt-5 lg:mt-0"><label onclick="getNewsId('${news._id}')" for="my-modal" class="btn modal-button btn-primary"><i class="fa-solid fa-arrow-right"></i></label></div>
                 </div>
             </div>
         </div>
@@ -97,10 +97,10 @@ const displayDetails = details => {
     const modalBody = document.getElementById('modal-body');
     modalBody.innerHTML = `
     <div class="modal-box">
-                <img class="w-full mb-3" src='${details.thumbnail_url}'>
-                <h3 class="font-bold text-lg">${details.title}</h3>
-                <p class="py-4">${details.details}</p>
-                <p>Rating: ${details.rating.number}</p>
+                <img class="w-full mb-3" src='${details.thumbnail_url ? details.thumbnail_url : "no image found"}'>
+                <h3 class="font-bold text-lg">${details.title ? details.title : "no title found"}</h3>
+                <p class="py-4">${details.details ? details.details : "no details found"}</p>
+                <p>Rating: ${details.rating.number ? details.rating.number : "No rating found"}</p>
                 <label for="my-modal" class="btn btn-sm btn-circle bg-red-500 absolute right-0 top-0">✕</label>
             </div>
     `;
@@ -117,5 +117,5 @@ const toggle = isTrue => {
     }
 }
 loadCatagories()
-// setMenu();
+setMenu();
 
