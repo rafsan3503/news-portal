@@ -8,6 +8,7 @@ const loadCatagories = () => {
         .catch(err => console.log(err));
 }
 
+// set menu function 
 const setMenu = items => {
     const menuContainer = document.getElementById('menu-container');
     
@@ -21,7 +22,7 @@ const setMenu = items => {
     })
 }
 
-
+// get id from menu 
 const getId = (Id,name) => {
     toggle(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${Id}`;
@@ -31,13 +32,17 @@ const getId = (Id,name) => {
         .then(data => disPlayNews(data.data, name))
 }
 
-
+// create card with dynamic id 
 const disPlayNews = (allNews,name) => {
     const newsContainer = document.getElementById('news-container');
+
+    // array sort for total view 
     const sort = allNews?.sort((a, b) => (a.total_view > b.total_view ? -1 : 1));
-    console.log(sort)
+    
     newsContainer.innerText = '';
     const result = document.getElementById('result');
+
+    // showing result 
     if (allNews.length === 0) {
         result.innerText = `No result found with this category ${name}`;
         result.classList.add('text-red-400')
@@ -47,6 +52,7 @@ const disPlayNews = (allNews,name) => {
         result.classList.remove('text-red-400');
     }
 
+    // create card 
     sort.forEach(news => {
         console.log(news);
         const div = document.createElement('div');
@@ -85,9 +91,11 @@ const disPlayNews = (allNews,name) => {
         `;
         newsContainer.appendChild(div);
     });
+    // spinner hide 
     toggle(false)
 }
 
+// get news id from button 
 const getNewsId = newsId => {
     const url = `https://openapi.programming-hero.com/api/news/${newsId}`
     console.log(url);
@@ -96,6 +104,7 @@ const getNewsId = newsId => {
         .then(data => displayDetails(data.data[0]))
 }
 
+// create modal body 
 const displayDetails = details => {
     console.log(details)
     const modalBody = document.getElementById('modal-body');
@@ -110,7 +119,7 @@ const displayDetails = details => {
     `;
 }
 
-
+// spinner function 
 const toggle = isTrue => {
     const spinner = document.getElementById('spinner');
     if (isTrue === true) {
@@ -120,6 +129,9 @@ const toggle = isTrue => {
         spinner.classList.add('hidden')
     }
 }
+
+
+// function call for menu 
 loadCatagories()
 
 

@@ -19,13 +19,13 @@
 </head>
 
 <body>
-    <header class="w-11/12 mx-auto mt-5">
-        <div class="navbar bg-base-100 border-b-2">
-            <div class="flex-1">
-                <a class="btn btn-ghost normal-case text-xl"><span class="bg-violet-400 p-2 rounded-md">Trusty</span>
-                    News</a>
+    <header class="w-11/12 mx-auto border-b-2 mt-5">
+        <div class="bg-violet-400 text-center rounded-lg md:flex justify-between">
+            <div>
+                <a class="btn btn-ghost normal-case text-xl"><span
+                        class="bg-violet-400 p-2 rounded-md text-white">Trusty</span> News</a>
             </div>
-            <div class="flex-none">
+            <div class="">
                 <ul class="menu menu-horizontal p-0">
                     <li><a href="index.html">News</a></li>
                     <li><a href="blog.html">Blog</a></li>
@@ -37,9 +37,9 @@
     <main>
        <section>
         <h3 class="text-5xl font-bold text-violet-700 text-center my-5">My Blogs</h3>
-        <section class="w-11/12 mx-auto grid grid-cols-2 gap-4 mt-5">
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row">
+        <section class="w-11/12 mx-auto grid lg:grid-cols-2 gap-4 mt-5">
+            <div class="bg-base-200 p-4 flex items-center">
+                <div class="">
                         <h1 class="text-5xl font-bold">Difference between var, let and const keywords in JavaScript</h1>
                         <p class="py-6">The scope of a var variable is functional scope. The scope of a let variable is block scope. The scope of a const
                         variable is block scope. It can be updated and re-declared into the scope.</p>
@@ -47,8 +47,8 @@
                     </div>
                 </div>
             </div>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row">
+            <div class="bg-base-200 flex items-center">
+                <div class="p-5">
                     <h1 class="text-5xl font-bold">The Difference Between Regular Functions and Arrow Functions</h1>
                     <p class="py-6">Regular functions created using function declarations or expressions are constructible and callable. Since regular
                     functions are constructible, they can be called using the new keyword. However, the arrow functions are only callable
@@ -58,8 +58,8 @@
                 </div>
             </div>
             </div>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row">
+            <div class="bg-base-200 flex items-center">
+                <div class="p-5">
                     <h1 class="text-5xl font-bold">What is the difference between forEach map filter and reduce?</h1>
                     <p class="py-6">The main difference between forEach and filter is that forEach just loop over the array and executes the callback but
                     filter executes the callback and check its return value. If the value is true element remains in the resulting array but
@@ -69,8 +69,8 @@
                 </div>
             </div>
             </div>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row">
+            <div class="bg-base-200 flex items-center">
+                <div class="p-5">
                     <h1 class="text-5xl font-bold">Template Strings in JavaScript</h1>
                     <p class="py-6">Template strings are a powerful feature of modern JavaScript released in ES6. It lets us insert/interpolate variables
                     and expressions into strings without needing to concatenate like in older versions of JavaScript. It allows us to create
