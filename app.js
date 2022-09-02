@@ -19,7 +19,7 @@ const setMenu = menus => {
 
 
 const getId = Id => {
-    toggle(true);
+    toggle(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${Id}`;
     console.log(url)
     fetch(url)
@@ -56,7 +56,8 @@ const disPlayNews = allNews => {
                         <div><i class="fa-solid fa-eye"></i></div>
                         <p>${news.total_view}</p>
                     </div>
-                    <button class="btn btn-primary"><i class="fa-solid fa-arrow-right"></i></button>
+
+                    <label onclick="getNewsId('${news._id}')" for="my-modal" class="btn modal-button btn-primary"><i class="fa-solid fa-arrow-right"></i></label>
                 </div>
             </div>
         </div>
@@ -66,11 +67,33 @@ const disPlayNews = allNews => {
     toggle(false)
 }
 
+const getNewsId = newsId => {
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`
+    console.log(url);
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayDetails(data.data[0]))
+}
+
+const displayDetails = details => {
+    console.log(details)
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML = `
+    <div class="modal-box">
+                <img class="w-full mb-3" src='${details.thumbnail_url}'>
+                <h3 class="font-bold text-lg">${details.title}</h3>
+                <p class="py-4">${details.details}</p>
+                <p>Rating: ${details.rating.number}</p>
+                <label for="my-modal" class="btn btn-sm btn-circle bg-red-500 absolute right-0 top-0">✕</label>
+            </div>
+    `;
+}
+
 
 const toggle = isTrue => {
     const spinner = document.getElementById('spinner');
     if (isTrue === true) {
-        spinner.classList.remove('hidded');
+        spinner.classList.remove('hidden');
     }
     else {
         spinner.classList.add('hidden')
