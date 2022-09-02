@@ -11,53 +11,70 @@ const setMenu = menus => {
         console.log(menu)
         const div = document.createElement('div');
         div.innerHTML = `
-        <li onclick="getId('${menu.category_id}')" class='bg-violet-300 p-2 rounded-lg cursor-pointer'>${menu.category_name}</li>
+        <li onclick="getId('${menu.category_id}','${menu.category_name}')" class='bg-violet-300 p-2 rounded-lg cursor-pointer mt-2 lg:mt-0'>${menu.category_name}</li>
         `
         menuContainer.appendChild(div)
     });
 }
 
 
-const getId = Id => {
+const getId = (Id,name) => {
     toggle(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${Id}`;
     console.log(url)
     fetch(url)
         .then(res => res.json())
-        .then(data => disPlayNews(data.data))
-
+        .then(data => disPlayNews(data.data, name))
 }
 
 
-const disPlayNews = allNews => {
+const disPlayNews = (allNews,name) => {
     const newsContainer = document.getElementById('news-container');
+    const sort = allNews?.sort((a, b) => (a.total_view > b.total_view ? -1 : 1));
+    console.log(sort)
     newsContainer.innerText = '';
+    const result = document.getElementById('result');
+    if (allNews.length === 0) {
+        result.innerText = `No result found with this category ${name}`;
+        result.classList.add('text-red-400')
+    }
+    else {
+        result.innerText = `${allNews.length} results found with this category ${name}`;
+        result.classList.remove('text-red-400');
+    }
 
-
-    allNews.forEach(news => {
+    sort.forEach(news => {
         console.log(news);
         const div = document.createElement('div');
         div.innerHTML = `
-        <div class="card card-side bg-base-100 shadow-xl mb-5">
-            <div class='w-1/3'>
+        <div class="bg-base-100 shadow-xl mb-5 md:flex">
+            <div class='w-full lg:w-1/3'>
             <figure><img class='w-full' src="${news.thumbnail_url}" alt="Movie"></figure></div>
-            <div class="card-body w-2/3">
+            <div class="card-body w-full lg:w-2/3">
                 <h2 class="card-title">${news.title}</h2>
-                <p>${news.details.slice(0,200)}</p>
-                <div class="card-actions flex justify-around">
-                    <div class="flex gap-5">
+                <p>${news.details.length > 300 ? news.details.slice(0,300)+'...' : news.details}</p>
+                <div class="lg:flex justify-between items-center mt-8 lg:mt-0">
+                    <div class="lg:flex gap-5">
                         <img class="w-8 rounded-md" src="${news.author.img}" alt="">
                         <div>
-                            <p>${news.author.name}</p>
-                            <p>${news.author.published_date}</p>
+                            <p>${news.author.name ? news.author.name : 'No Author Found'}</p>
+                            <p>${news.author.published_date ? news.author.published_date : "No Date Found"}</p>
                         </div>
                     </div>
-                    <div>
+                    <div class='flex mt-5 lg:mt-0'>
                         <div><i class="fa-solid fa-eye"></i></div>
-                        <p>${news.total_view}</p>
+                        <p>${news.total_view ? news.total_view : 'No View'}</p>
                     </div>
 
-                    <label onclick="getNewsId('${news._id}')" for="my-modal" class="btn modal-button btn-primary"><i class="fa-solid fa-arrow-right"></i></label>
+                    <div class="rating">
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-white" />
+                    </div>
+
+                    <div class="mt-5 lg:mt-0 w-full"><label onclick="getNewsId('${news._id}')" for="my-modal" class="btn modal-button btn-primary"><i class="fa-solid fa-arrow-right"></i></label></div>
                 </div>
             </div>
         </div>

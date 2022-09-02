@@ -18,24 +18,28 @@
 </head>
 <body>
   <header class="w-11/12 mx-auto border-b-2 mt-5">
-    <div class="navbar bg-base-100">
-        <div class="flex-1">
-            <a class="btn btn-ghost normal-case text-xl"><span class="bg-violet-400 p-2 rounded-md">Trusty</span> News</a>
+    <div class="bg-violet-400 text-center rounded-lg md:flex justify-between">
+        <div>
+            <a class="btn btn-ghost normal-case text-xl"><span class="bg-violet-400 p-2 rounded-md text-white">Trusty</span> News</a>
         </div>
-        <div class="flex-none">
+        <div class="">
             <ul class="menu menu-horizontal p-0">
-                <li><a>News</a></li>
-                <li><a>Blog</a></li>
+                <li><a href="index.html">News</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a><i class="fa-solid fa-user"></i></a></li>
             </ul>
         </div>
     </div>
   </header>
-  <main>
+  <main class="min-h-screen">
     <section class="w-11/12 mx-auto mt-5 text-center">
-        <ul id="menu-container" class="flex justify-evenly p-3 backdrop-blur-md rounded-box">
+        <ul id="menu-container" class="lg:flex justify-evenly p-3 backdrop-blur-md rounded-box">
             
         </ul>
+    </section>
+
+    <section class="w-11/12 my-4 bg-violet-400 mx-auto rounded-lg">
+        <h3 class="p-4 text-white lg:text-xl" id="result"></h3>
     </section>
 
     <section id="spinner" class="my-5 w-1/2 mx-auto hidden">
@@ -48,13 +52,7 @@
     <section>
         <input type="checkbox" id="my-modal" class="modal-toggle" />
         <div id="modal-body" class="modal">
-            <div class="modal-box">
-                <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
-                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                <div class="modal-action">
-                    <label for="my-modal" class="btn">Yay!</label>
-                </div>
-            </div>
+            
         </div>
     </section>
   </main>
