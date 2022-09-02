@@ -132,6 +132,9 @@ const toggle = isTrue => {
 
 
 // function call for menu 
-loadCatagories()
+loadCatagories();
+
+// show some result always 
+getId("01",'Default');
 
 
