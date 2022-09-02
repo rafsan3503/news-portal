@@ -1,20 +1,24 @@
+// fetch data for categories 
+
 const loadCatagories = () => {
     fetch("https://openapi.programming-hero.com/api/news/categories")
         .then(res => res.json())
         .then(data => setMenu(data.data.news_category))
+        // catch error 
         .catch(err => console.log(err));
 }
 
-const setMenu = menus => {
+const setMenu = items => {
     const menuContainer = document.getElementById('menu-container');
-    menus.forEach(menu => {
-        console.log(menu)
-        const div = document.createElement('div');
+    
+    items.forEach(menu => {
+    console.log(menu)
+    const div = document.createElement('div');
         div.innerHTML = `
-        <li onclick="getId('${menu.category_id}','${menu.category_name}')" class='bg-violet-300 p-2 rounded-lg cursor-pointer mt-2 lg:mt-0'>${menu.category_name}</li>
-        `
-        menuContainer.appendChild(div)
-    });
+    <li onclick="getId('${menu.category_id}','${menu.category_name}')" class='bg-violet-300 p-2 rounded-lg cursor-pointer mt-2 lg:mt-0'>${menu.category_name}</li>
+    `;
+    menuContainer.appendChild(div)
+    })
 }
 
 
@@ -117,5 +121,5 @@ const toggle = isTrue => {
     }
 }
 loadCatagories()
-setMenu();
+
 
