@@ -43,8 +43,28 @@
             <div class="bg-base-200 p-4 flex items-center">
                 <div class="">
                         <h1 class="text-5xl font-bold">Difference between var, let and const keywords in JavaScript</h1>
-                        <p class="py-6">The scope of a var variable is functional scope. The scope of a let variable is block scope. The scope of a const
-                        variable is block scope. It can be updated and re-declared into the scope.</p>
+                        <p class="py-6">
+                        <strong>Var</strong> <br> <br>
+                        1. variables defined with var can be redeclared.
+                        2. variables defined with var can be reassigned.
+                        3. variables defined with var have functional scope.
+                        4. variables defined with var can not have block scope.
+                        5. variables defined with var are hoisted to the top and can be initialized at any time <br> <br>
+                        <strong>Let</strong> <br> <br>
+                        
+                        1. Variables defined with let can not be redeclared.
+                        2. Variables defined with let can be reassigned.
+                        3. Variables defined with let have block scope.
+                        4. variables defined with let are hoisted to the top but not initialized - meaning using let variable before it is
+                        declared will result in a ReferenceError. <br> <br>
+                        <strong>const</strong> <br> <br>
+                        
+                        1. Variables defined with const can not be redeclared.
+                        2. Variables defined with const can not be reassigned
+                        3. Variables defined with const have block scope
+                        4. variables defined with const are hoisted to the top but not initialized - meaning using const variable before it is
+                        declared will result in a ReferenceError.
+                        </p>
                         <a href="https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/" class="btn btn-primary">Read More</a>
                     </div>
                 </div>
@@ -52,9 +72,17 @@
             <div class="bg-base-200 flex items-center">
                 <div class="p-5">
                     <h1 class="text-5xl font-bold">The Difference Between Regular Functions and Arrow Functions</h1>
-                    <p class="py-6">Regular functions created using function declarations or expressions are constructible and callable. Since regular
-                    functions are constructible, they can be called using the new keyword. However, the arrow functions are only callable
-                    and not constructible, i.e arrow functions can never be used as constructor functions.</p>
+                    <p class="py-6">Regular Function:
+                    function hello() {
+                    return "hello";
+                    } <br>Regular function have 'this' <br>
+                    Does have argumetns object <br>
+                    can call with new keyword <br> <br>
+                    Arrow Function:
+                    let hello = () => "hello"; <br>
+                    Does not have this like regular function. <br>
+                    Does not have argumetns object <br>
+                    cannot call with new keyword</p>
                     <a href="https://betterprogramming.pub/difference-between-regular-functions-and-arrow-functions-f65639aba256#:~:text=Regular%20functions%20created%20using%20function,be%20used%20as%20constructor%20functions." class="btn btn-primary">Read
                         More</a>
                 </div>
@@ -63,9 +91,11 @@
             <div class="bg-base-200 flex items-center">
                 <div class="p-5">
                     <h1 class="text-5xl font-bold">What is the difference between forEach map filter and reduce?</h1>
-                    <p class="py-6">The main difference between forEach and filter is that forEach just loop over the array and executes the callback but
-                    filter executes the callback and check its return value. If the value is true element remains in the resulting array but
-                    if the return value is false the element will be removed for the resulting array.</p>
+                    <p class="py-6">forEach method- does not return anything, it’s not chainable. <br> <br>
+                    map method- returns a new array by applying callback function on each element of array, it’s chainable. <br> <br>
+                filter method- returns a new array of elements which fulfill the condition  applying callback function on each element of array.<br> <br>
+                
+                find method-returns first element of an array which fulfill the condition applying callback function on each element of array.</p>
                     <a href="https://codeburst.io/array-methods-explained-filter-vs-map-vs-reduce-vs-foreach-ea3127c6d319" class="btn btn-primary">Read
                         More</a>
                 </div>
@@ -74,9 +104,10 @@
             <div class="bg-base-200 flex items-center">
                 <div class="p-5">
                     <h1 class="text-5xl font-bold">Template Strings in JavaScript</h1>
-                    <p class="py-6">Template strings are a powerful feature of modern JavaScript released in ES6. It lets us insert/interpolate variables
-                    and expressions into strings without needing to concatenate like in older versions of JavaScript. It allows us to create
-                    strings that are complex and contain dynamic elements.</p>
+                    <p class="py-6">Template Literals
+                    It is common to use '+' to concatenate multiple string variables.
+                    ES6 template literals make it much easier with backtick and ${}.
+                    Writing multi-lines of string in code is made much easier with backticks.</p>
                     <a href="https://levelup.gitconnected.com/template-strings-in-javascript-34b7fdc64b09" class="btn btn-primary">Read
                         More</a>
                 </div>
