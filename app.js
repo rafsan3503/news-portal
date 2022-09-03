@@ -13,7 +13,7 @@ const setMenu = items => {
     const menuContainer = document.getElementById('menu-container');
     
     items.forEach(menu => {
-    console.log(menu)
+    // console.log(menu)
     const div = document.createElement('div');
         div.innerHTML = `
     <li onclick="getId('${menu.category_id}','${menu.category_name}')" class='bg-violet-300 p-2 rounded-lg cursor-pointer mt-2 lg:mt-0'>${menu.category_name}</li>
@@ -26,10 +26,11 @@ const setMenu = items => {
 const getId = (Id,name) => {
     toggle(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${Id}`;
-    console.log(url)
+    // console.log(url)
     fetch(url)
         .then(res => res.json())
         .then(data => disPlayNews(data.data, name))
+        .catch(err => console.log(err))
 }
 
 // create card with dynamic id 
@@ -54,7 +55,7 @@ const disPlayNews = (allNews,name) => {
 
     // create card 
     sort.forEach(news => {
-        console.log(news);
+        // console.log(news);
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="bg-base-100 shadow-xl mb-5 lg:flex">
@@ -102,6 +103,7 @@ const getNewsId = newsId => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayDetails(data.data[0]))
+        .catch(err => console.log(err))
 }
 
 // create modal body 
